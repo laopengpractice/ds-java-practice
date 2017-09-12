@@ -6,25 +6,17 @@ package com.wpf.ds;
 public class MergeArray {
 
     public static void mergeArray(int[] n1, int m, int[] n2, int n) {
-        int[] tmp = new int[m];
-        for (int i = 0 ; i< m; ++i) {
-            tmp[i] = n1[i];
-        }
-        int k = 0, i = 0, j = 0;
-        while (i < m && j < n2.length) {
-            if (tmp[i] < n2[j]) {
-                n1[k++] = tmp[i++];
+        int k = m + n - 1;
+        int i = m - 1, j = n - 1;
+        while (i >= 0 && j >= 0) {
+            if (n1[i] > n2[j]) {
+                n1[k--] = n1[i--];
             } else {
-                n1[k++] = n2[j++];
+                n1[k--] = n2[j--];
             }
         }
-        while (i < m) {
-            n1[k++] = tmp[i++];
+        while (j >= 0) {
+            n1[k--] = n2[j--];
         }
-        while (j < n2.length) {
-            n1[k++] = n2[j++];
-        }
-
-        return;
     }
 }

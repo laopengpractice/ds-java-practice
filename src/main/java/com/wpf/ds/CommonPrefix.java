@@ -5,23 +5,33 @@ package com.wpf.ds;
  */
 public class CommonPrefix {
 
-
     public static String commonPrefix(String[] arrays) {
         if (arrays.length == 0) {
-            return null;
+            return "";
         }
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < arrays[0].length(); ++i) {
-            char c = arrays[0].charAt(i);
-            for (int j = 1; j < arrays.length; ++j) {
-                if (i >= arrays[j].length() || arrays[j].charAt(i) != c) {
-                    return sb.toString();
+        int min = 0;
+        for (int i = 1; i < arrays.length; ++i) {
+            if (arrays[i].length() < arrays[min].length()) {
+                min = i;
+            }
+        }
+
+        String prefix = arrays[min];
+        for (int i = 0; i < arrays.length; ++i) {
+            if (i == min) {
+                continue;
+            }
+            for (int j = 0; j < prefix.length(); ++j) {
+                if (prefix.charAt(j) != arrays[i].charAt(j)) {
+                    prefix = prefix.substring(0, j);
+                    break;
                 }
             }
-
-            sb.append(c);
+            if (prefix.length() == 0) {
+                break;
+            }
         }
 
-        return sb.toString();
+        return prefix;
     }
 }
