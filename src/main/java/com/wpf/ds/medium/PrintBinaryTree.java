@@ -2,8 +2,6 @@ package com.wpf.ds.medium;
 
 import com.wpf.ds.common.PrintUtils;
 import com.wpf.ds.common.TreeNode;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by wenpengfei on 2017/9/27.
@@ -54,6 +52,6 @@ public class PrintBinaryTree {
         root.left = new TreeNode(2);
         root.left.left = new TreeNode(4);
         root.left.right = new TreeNode(3);
-        PrintUtils.print(printBinaryTree(root));
+        PrintUtils.print2D(printBinaryTree(root));
     }
 }
