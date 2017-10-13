@@ -1,9 +1,17 @@
 package com.wpf.ds.common;
 
+import java.util.List;
+
 /**
  * Created by wenpengfei on 2017/9/27.
  */
 public class PrintUtils {
+
+    public static <T> void printList(List<T> list) {
+        for (T item : list) {
+            System.out.println(item.toString() + " ");
+        }
+    }
 
     public static void printInt(int[] array) {
         for (int i : array) {
