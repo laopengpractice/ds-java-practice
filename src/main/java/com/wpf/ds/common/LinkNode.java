@@ -5,8 +5,8 @@ package com.wpf.ds.common;
  */
 public class LinkNode {
 
-    private int val;
-    private LinkNode next;
+    public int val;
+    public LinkNode next;
 
     public LinkNode(int val) {
         this.val = val;
