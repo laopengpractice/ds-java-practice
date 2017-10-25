@@ -20,6 +20,15 @@ public class PrintUtils {
         System.out.println();
     }
 
+    public static void printInt2D(int[][] array) {
+        for (int i = 0; i < array.length; ++i) {
+            for (int j = 0; j < array[i].length; ++j) {
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
     public static <T> void print1D(T[] s) {
         for (T t : s) {
             System.out.print(t.toString() + " ");
