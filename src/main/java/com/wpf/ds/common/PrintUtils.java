@@ -48,4 +48,11 @@ public class PrintUtils {
             System.out.println();
         }
     }
+
+    public static void printLinkList(LinkNode head) {
+        while (head != null) {
+            System.out.println(head.val);
+            head = head.next;
+        }
+    }
 }
