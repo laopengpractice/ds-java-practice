@@ -9,8 +9,9 @@ public class PrintUtils {
 
     public static <T> void printList(List<T> list) {
         for (T item : list) {
-            System.out.println(item.toString() + " ");
+            System.out.print(item.toString() + " ");
         }
+        System.out.println();
     }
 
     public static void printInt(int[] array) {
