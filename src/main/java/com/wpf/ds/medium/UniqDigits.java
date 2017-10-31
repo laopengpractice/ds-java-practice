@@ -6,15 +6,21 @@ package com.wpf.ds.medium;
 public class UniqDigits {
 
     public static int uniqDigits(int n) {
-        if (n == 1) {
-            return 10;
+        if (n == 0) {
+            return 1;
         }
-        int rs = 9 * 9;
-        int f = 9;
-        for (int i = 3; i <= n; ++i) {
-            rs *= (10 - i + 1);
+
+        int rs = 10;
+        int pre = 9;
+        for (int i = 2; i <= n; ++i) {
+            rs += pre * (10 - i + 1);
+            pre *= (10 - i + 1);
         }
 
         return rs;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(uniqDigits(4));
     }
 }

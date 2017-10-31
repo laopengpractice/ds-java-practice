@@ -5,11 +5,11 @@ package com.wpf.ds.common;
  */
 public class LinkListUtils {
 
-    public static LinkNode create(int[] nums) {
-        LinkNode head = new LinkNode(0);
-        LinkNode p = head;
+    public static LinkList create(int[] nums) {
+        LinkList head = new LinkList(0);
+        LinkList p = head;
         for (int n : nums) {
-            LinkNode item = new LinkNode(n);
+            LinkList item = new LinkList(n);
             p.next = item;
             p = item;
         }

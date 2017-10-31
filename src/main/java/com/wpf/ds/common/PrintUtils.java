@@ -50,7 +50,7 @@ public class PrintUtils {
         }
     }
 
-    public static void printLinkList(LinkNode head) {
+    public static void printLinkList(LinkList head) {
         while (head != null) {
             System.out.println(head.val);
             head = head.next;

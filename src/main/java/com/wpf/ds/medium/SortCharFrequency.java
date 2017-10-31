@@ -1,9 +1,5 @@
 package com.wpf.ds.medium;
 
-import com.wpf.ds.common.LinkNode;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.PriorityQueue;
 
 /**

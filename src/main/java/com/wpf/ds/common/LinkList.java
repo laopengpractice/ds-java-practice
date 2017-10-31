@@ -3,12 +3,12 @@ package com.wpf.ds.common;
 /**
  * Created by wenpengfei on 2017/9/22.
  */
-public class LinkNode {
+public class LinkList {
 
     public int val;
-    public LinkNode next;
+    public LinkList next;
 
-    public LinkNode(int val) {
+    public LinkList(int val) {
         this.val = val;
     }
 }

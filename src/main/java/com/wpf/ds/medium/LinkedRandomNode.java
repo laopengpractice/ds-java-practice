@@ -1,6 +1,6 @@
 package com.wpf.ds.medium;
 
-import com.wpf.ds.common.LinkNode;
+import com.wpf.ds.common.LinkList;
 import java.util.Random;
 
 /**
@@ -8,10 +8,10 @@ import java.util.Random;
  */
 public class LinkedRandomNode {
 
-    private LinkNode head;
+    private LinkList head;
     private Random random;
 
-    public LinkedRandomNode(LinkNode head) {
+    public LinkedRandomNode(LinkList head) {
         this.head = head;
         random = new Random();
     }
@@ -21,7 +21,7 @@ public class LinkedRandomNode {
             return 0;
         }
 
-        LinkNode cur = head;
+        LinkList cur = head;
         int rs = 0;
         for (int i = 1; cur != null; cur = cur.next, ++i) {
             if (random.nextInt(i) == 0) {
