@@ -1,8 +1,5 @@
 package com.wpf.ds.medium;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
 /**
  * Created by wenpengfei on 2017/11/1.
  */
@@ -13,7 +10,7 @@ public class MaxProductOfWordLength {
         int[] bits = new int[strs.length];
         for (int i = 0; i < strs.length; ++i) {
             for (int j = 0; j < strs[i].length(); ++j) {
-                bits[i] &= 1 << (strs[i].charAt(j) - 'a');
+                bits[i] |= 1 << (strs[i].charAt(j) - 'a');
             }
         }
 

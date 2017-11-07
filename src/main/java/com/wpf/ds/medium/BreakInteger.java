@@ -5,27 +5,21 @@ package com.wpf.ds.medium;
  */
 public class BreakInteger {
 
-
     public static int breakInteger(int n) {
-        int max = 1;
-        for (int i = 1; i <= n / 2 + 1; ++i) {
-            int l = n / i;
-            int k = n % i;
-            int num = (int) Math.pow(i, l);
-            if (k != 0) {
-                num *= k;
-            }
-            if (num > max) {
-                max = num;
-            }
+        int num3 = n / 3;
+        int num2 = 0;
+        if (n % 3 == 1) {
+            num3--;
+            num2 = 2;
+        } else if (n % 3 == 2) {
+            num2 = 1;
         }
 
-        return max;
+
+        return (int)(Math.pow(3, num3) * Math.pow(2, num2));
     }
 
     public static void main(String[] args) {
-        long start = System.currentTimeMillis();
         System.out.println(breakInteger(58));
-        System.out.println(System.currentTimeMillis() - start);
     }
 }
