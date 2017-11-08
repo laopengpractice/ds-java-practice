@@ -1,6 +1,8 @@
 package com.wpf.ds.medium;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by wenpengfei on 2017/10/13.
@@ -40,6 +42,34 @@ public class Sum4Two {
                     }
                 }
             }
+
+        return rs;
+    }
+
+    public static int sum4Hash(int[] a, int[] b, int[] c, int[] d) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int ai : a) {
+            for (int bi : b) {
+                int sum = ai + bi;
+                Integer num = map.get(sum);
+                if (num == null) {
+                    map.put(sum, 1);
+                } else {
+                    map.put(sum, num + 1);
+                }
+            }
+        }
+
+        int rs = 0;
+        for (int ci : c) {
+            for (int di : d) {
+                int key = -(ci + di);
+                Integer num = map.get(key);
+                if (num != null) {
+                    rs += num;
+                }
+            }
+        }
 
         return rs;
     }
