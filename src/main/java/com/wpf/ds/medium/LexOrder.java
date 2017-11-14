@@ -25,9 +25,29 @@ public class LexOrder {
         return rs;
     }
 
+    public static List<Integer> lexOrder2(int n) {
+        List<Integer> rs = new ArrayList<>();
+        for (int i = 1; i < 10; ++i) {
+            dfs(i, rs, n);
+        }
+
+        return rs;
+    }
+
+    private static void dfs(int i, List<Integer> rs, int n) {
+        if (i > n) {
+            return;
+        }
+
+        rs.add(i);
+        for (int j = 0; j < 10; ++j) {
+
+        }
+    }
+
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        lexOrder1(1000000);
+        lexOrder2(100);
         System.out.println(System.currentTimeMillis() - start);
     }
 }

@@ -7,6 +7,25 @@ import java.util.Arrays;
  */
 public class ValidTriangle {
 
+    public static int validTriangle2(int[] nums) {
+        Arrays.sort(nums);
+        int rs = 0;
+        int n = nums.length;
+        for (int i = n - 1; i > 1; --i) {
+            int l = 0, r = i - 1;
+            while (l < r) {
+                if (nums[l] + nums[r] > nums[i]) {
+                    rs += r - l;
+                    r--;
+                } else {
+                    l++;
+                }
+            }
+        }
+
+        return rs;
+    }
+
     public static int validTriangle(int[] nums) {
         Arrays.sort(nums);
         int rs = 0;
@@ -15,7 +34,7 @@ public class ValidTriangle {
                 int c = nums[i] + nums[j];
                 int idx = bSearch(nums, j + 1, nums.length - 1, c);
                 if (idx <= j || nums[idx] >= c) {
-                    break;
+                    continue;
                 }
                 rs += idx - j;
             }
@@ -40,6 +59,6 @@ public class ValidTriangle {
     }
 
     public static void main(String[] args) {
-        System.out.println(validTriangle(new int[]{1, 2, 2, 3, 4}));
+        System.out.println(validTriangle2(new int[]{24, 3, 82, 22, 35, 84, 19}));
     }
 }
