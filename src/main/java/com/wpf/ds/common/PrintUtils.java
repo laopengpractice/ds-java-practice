@@ -9,7 +9,7 @@ public class PrintUtils {
 
     public static <T> void printList(List<T> list) {
         for (T item : list) {
-            System.out.print(item.toString() + " ");
+            System.out.println(item.toString() + " ");
         }
         System.out.println();
     }
