@@ -45,7 +45,7 @@ public class EvalDivision {
                 } else {
                     Map<String, Double> map = graphMap.get(secondDelegate);
                     delegate.put(first, secondDelegate);
-                    map.put(first, map.get(first) / vals[i]);
+                    map.put(first, map.get(second) / vals[i]);
                 }
             }
         }
