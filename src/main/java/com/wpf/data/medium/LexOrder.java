@@ -1,8 +1,7 @@
 package com.wpf.data.medium;
 
+import com.wpf.data.common.PrintUtils;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -10,44 +9,32 @@ import java.util.List;
  */
 public class LexOrder {
 
-    public static List<Integer> lexOrder1(int n) {
+    public static List<Integer> lexOrder(int n) {
         List<Integer> rs = new ArrayList<>();
-        for (int i = 1; i <= n; ++i) {
+        int i = 1;
+        while (i <= n) {
             rs.add(i);
-        }
-
-        Collections.sort(rs, new Comparator<Integer>() {
-            @Override public int compare(Integer o1, Integer o2) {
-                return String.valueOf(o1).compareTo(String.valueOf(o2));
+            while (i * 10 <= n) {
+                rs.add(i * 10);
+                i = i * 10;
             }
-        });
-
-        return rs;
-    }
-
-    public static List<Integer> lexOrder2(int n) {
-        List<Integer> rs = new ArrayList<>();
-        for (int i = 1; i < 10; ++i) {
-            dfs(i, rs, n);
+            if (i + 1 > n || i % 10 == 9) {
+                i /= 10;
+                while (i % 10 == 9) {
+                    i /= 10;
+                }
+                if (i == 0) {
+                    break;
+                }
+            }
+            i++;
         }
 
         return rs;
-    }
-
-    private static void dfs(int i, List<Integer> rs, int n) {
-        if (i > n) {
-            return;
-        }
-
-        rs.add(i);
-        for (int j = 0; j < 10; ++j) {
-
-        }
     }
 
     public static void main(String[] args) {
-        long start = System.currentTimeMillis();
-        lexOrder2(100);
-        System.out.println(System.currentTimeMillis() - start);
+        List<Integer> rs = lexOrder(299);
+        PrintUtils.printList(rs);
     }
 }
