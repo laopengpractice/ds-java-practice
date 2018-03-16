@@ -53,13 +53,39 @@ public class BTreeWidth {
         return rs;
     }
 
+    public static int bTreeWidth2(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        List<Integer> leftMosts = new ArrayList<>();
+        return dfs(root, 1, 0, leftMosts);
+    }
+
+    private static int dfs(TreeNode root, int id, int level, List<Integer> leftMosts) {
+        if (root == null) {
+            return 0;
+        }
+
+        if (leftMosts.size() <= level) {
+            leftMosts.add(id);
+        }
+
+        int leftDfs = dfs(root.left, id * 2, level + 1, leftMosts);
+        int rightDfs = dfs(root.right, id * 2 + 1, level + 1, leftMosts);
+
+        int width = id - leftMosts.get(level) + 1;
+
+        return Math.max(Math.max(width, leftDfs), rightDfs);
+    }
+
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
         root.right = new TreeNode(3);
         root.left.left = new TreeNode(3);
         root.right.right = new TreeNode(4);
-        int rs = bTreeWidth(root);
+        int rs = bTreeWidth2(root);
         System.out.println(rs);
     }
 }
