@@ -6,6 +6,10 @@ package com.wpf.data.medium;
 public class SellStockCooldown_309 {
 
     public static int maxProfit(int[] nums) {
+        if (nums.length <= 1) {
+            return 0;
+        }
+
         int[] hold = new int[nums.length];
         int[] unhold = new int[nums.length];
         boolean[] sell = new boolean[nums.length];

@@ -7,7 +7,7 @@ package com.wpf.data.medium;
 public class SellStockWithFee_714 {
 
     public static int maxProfit(int[] prices, int fee) {
-        if (prices.length == 1) {
+        if (prices.length <= 1) {
             return 0;
         }
 
