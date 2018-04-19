@@ -23,6 +23,24 @@ public class IsSubSeq_392 {
         return dp[t.length()][s.length()];
     }
 
+    public static boolean isSubSeq2(String s, String t) {
+        if (s.length() == 0) {
+            return true;
+        }
+        int i = 0, j = 0;
+        while (j < t.length()) {
+            if (s.charAt(i) == t.charAt(j)) {
+                i++;
+                if (i == s.length()) {
+                    return true;
+                }
+            }
+            j++;
+        }
+
+        return false;
+    }
+
     public static void main(String[] args) {
         System.out.println(isSubSequence("abc", "adfbeagd"));
     }
