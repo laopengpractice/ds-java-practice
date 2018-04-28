@@ -1,6 +1,6 @@
 package com.wpf.data.common;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by wenpengfei on 2017/9/27.
@@ -55,5 +55,27 @@ public class PrintUtils {
             System.out.println(head.val);
             head = head.next;
         }
+    }
+
+    public static void printLevelTree(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            TreeNode node = q.poll();
+            if (node == null) {
+                System.out.print("null,");
+                continue;
+            }
+
+            System.out.print(node.val + ",");
+            q.add(node.left);
+            q.add(node.right);
+        }
+
+        System.out.println();
     }
 }
