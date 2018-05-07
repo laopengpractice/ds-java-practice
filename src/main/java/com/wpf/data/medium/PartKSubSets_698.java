@@ -32,6 +32,11 @@ public class PartKSubSets_698 {
         if (sum % k != 0) {
             return false;
         }
+
+        int target = sum / k;
+        while (k > 0) {
+            int[] newNums = help(nums, target);
+        }
         int[] newNums = help(nums, sum / k);
         if (newNums == null) {
             return false;

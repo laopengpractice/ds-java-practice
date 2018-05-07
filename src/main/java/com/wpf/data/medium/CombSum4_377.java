@@ -7,42 +7,64 @@ import java.util.Arrays;
  */
 public class CombSum4_377 {
 
+    static int rs4;
+
     //1 2 3, 4
     public static int combSum4(int[] nums, int target) {
         Arrays.sort(nums);
+        help(nums, target);
+
+        return rs4;
+    }
+
+    private static void help(int[] nums, int target) {
+        if (target == 0) {
+            rs4++;
+            return;
+        }
+        if (target < nums[0]) {
+            return;
+        }
+
+
+        for (int i = 0; i < nums.length; ++i) {
+            int t = target - nums[i];
+            help(nums, t);
+        }
+
+        return;
+    }
+
+    public static int combSum4_dp(int[] nums, int target) {
         int[] dp = new int[target + 1];
-        for (int i = 0; i < dp.length; i++) {
+        dp[0] = 1;
+        for (int i = 1; i <= target; ++i) {
             dp[i] = -1;
         }
-        help(nums, target, dp);
-
+        help_dp(nums, target, dp);
         return dp[target];
     }
 
-    private static int help(int[] nums, int target, int[] dp) {
-        if (target < nums[0]) {
-            dp[target] = 0;
-            return 0;
-        }
-
-        if (target == nums[0]) {
-            dp[target] = 1;
-            return 1;
+    private static int help_dp(int[] nums, int target, int[] dp) {
+        if (dp[target] != -1) {
+            return dp[target];
         }
 
         int rs = 0;
         for (int i = 0; i < nums.length; ++i) {
-            int t = target - nums[i];
-            while (t > 0) {
-                if (dp[t] == -1) {
-                    dp[t] = combSum4(nums, t);
-                }
-                rs += dp[t];
-                t -= nums[i];
+            if (target < nums[i]) {
+                break;
             }
+            int t = target - nums[i];
+            if (dp[t] == -1) {
+                dp[t] = help_dp(nums, t, dp);
+            }
+
+            rs += dp[t];
         }
 
         dp[target] = rs;
+
         return rs;
     }
 
@@ -69,6 +91,6 @@ public class CombSum4_377 {
     }
 
     public static void main(String[] args) {
-        System.out.println(combSumWithNeg(new int[]{-1, 1, 2, 3}, 5));
+        System.out.println(combSum4_dp(new int[]{3, 4, 5, 6, 7, 8, 9, 10}, 10));
     }
 }
