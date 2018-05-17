@@ -34,10 +34,7 @@ public class PartKSubSets_698 {
         }
 
         int target = sum / k;
-        while (k > 0) {
-            int[] newNums = help(nums, target);
-        }
-        int[] newNums = help(nums, sum / k);
+        int[] newNums = help(nums, target);
         if (newNums == null) {
             return false;
         }
@@ -46,19 +43,27 @@ public class PartKSubSets_698 {
 
     private static int[] help(int[] nums, int target) {
         boolean[][] use = new boolean[nums.length + 1][target + 1];
-        boolean[] dp = new boolean[target + 1];
-        dp[0] = true;
+        boolean[][] dp = new boolean[nums.length + 1][target + 1];
+        for (int i = 0; i <= nums.length; ++i) {
+            dp[i][0] = true;
+        }
 
+        boolean found = false;
         for (int i = 1; i <= nums.length; ++i) {
             for (int j = 1; j <= target; ++j) {
-                if (j - nums[i - 1] >= 0 && !dp[j] && dp[j - nums[i - 1]]) {
+                if (j - nums[i - 1] >= 0 && !dp[i - 1][j] && dp[i - 1][j - nums[i - 1]]) {
                     use[i][j] = true;
-                    dp[j] = true;
+                    dp[i][j] = true;
                 }
+            }
+
+            if (dp[i][target]) {
+                found = true;
+                break;
             }
         }
 
-        if (!dp[target]) {
+        if (!found) {
             return null;
         }
 
@@ -68,10 +73,8 @@ public class PartKSubSets_698 {
             if (use[i][j]) {
                 idxs.add(i - 1);
                 j = j - nums[i - 1];
-                i = i - 1;
-            } else {
-                i = i - 1;
             }
+            i = i - 1;
         }
 
         List<Integer> rs = new ArrayList<>();
@@ -89,6 +92,6 @@ public class PartKSubSets_698 {
     }
 
     public static void main(String[] args) {
-        System.out.println(partKSubSets(new int[]{4, 3, 2, 3, 5, 2, 1}, 5));
+        System.out.println(partKSubSets(new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 5));
     }
 }
