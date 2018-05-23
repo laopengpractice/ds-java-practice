@@ -3,7 +3,7 @@ package com.wpf.data.medium;
 /**
  * Created by wenpengfei on 2018/2/6.
  */
-public class MonotoneDigits {
+public class MonotoneDigits_738 {
 
     public static int monotoneDigits(int n) {
         if (n == 0) {
